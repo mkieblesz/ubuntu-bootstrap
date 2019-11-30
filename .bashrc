@@ -26,7 +26,7 @@ esac
 
 # command history
 shopt -s histappend  # overrite latest history file entries on shell exit
-export HISTCONTROL=ignoreboth  # no duplicate history entries or those starting with space
+export HISTCONTROL=ignoreboth:erasedups  # no duplicate history entries or those starting with space and erase duplicates
 export HISTSIZE=10000  # allowed history entries during bash session
 export HISTFILESIZE=10000  # allowed history entries in persistent storage
 
@@ -37,36 +37,18 @@ export HISTFILESIZE=10000  # allowed history entries in persistent storage
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
 
-# COMMANDS
+# COMMANDS & PROGRAMS
 # less - friendly output for non-text input files
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# ls
-alias ls='LC_COLLATE=C ls -l --group-directories-first --color=auto'
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
-# clear - don't clear scrollback
-alias clear="printf '\33[H\33[2J'"
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-# vim
-non-empty-vim () {
-    # used for sk shortcut to not open vim if no file passed
-    test ! -z "${1// }" && vim ${1:+"$1"}
-}
-
-# rg - ripgrep for improved grep
+# rg - ripgrep - improved grep
+# ranger - command line file explorer
 
 # skim - fuzzy finder
 # fuzzy search for files in current directory with preview and if found open in vim
-bind '"\C-p": "\C-a non-empty-vim $(sk -e --preview \"bat --color=always {}\") \C-j"'
+bind '"\C-p": "\C-a vim $(sk -e --preview \"bat --color=always {}\") \C-j"'
 # fuzzy search for text recrusiviely in all files in current directory and if found open in vim at correct line and column
-bind '"\C-o": "\C-a non-empty-vim $(sk --ansi -i -c \"rg --no-ignore --hidden --color=always --line-number \\\"{}\\\"\" | cut -f 1-2 -d : | sed \"s/:/ +/g\") \C-j"'
+bind '"\C-o": "\C-a vim $(sk --ansi -i -c \"rg --no-ignore --hidden --color=always --line-number \\\"{}\\\"\" | cut -f 1-2 -d : | sed \"s/:/ +/g\") \C-j"'
 
 # hstr - reverse history search
 export HSTR_CONFIG=hicolor,raw-history-view,regexp-matching,static-favorites,skip-favorites-comments
@@ -81,6 +63,17 @@ bind '"\C-f": "\C-a hstr -f \C-j"'
 # gcloud
 if [ -f '/opt/google-cloud-sdk/path.bash.inc' ]; then . '/opt/google-cloud-sdk/path.bash.inc'; fi
 if [ -f '/opt/google-cloud-sdk/completion.bash.inc' ]; then . '/opt/google-cloud-sdk/completion.bash.inc'; fi
+
+# ALIASES
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias ls='LC_COLLATE=C ls -l --group-directories-first --color=auto'
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+# clear without removing scrollback
+alias clear="printf '\33[H\33[2J'"
 
 # LANGUAGES
 # Go
