@@ -9,7 +9,7 @@ module.exports = {
     updateChannel: 'stable',
 
     // default font size in pixels for all tabs
-    fontSize: 10,
+    fontSize: 9,
 
     // font family with optional fallbacks
     fontFamily: 'Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
@@ -150,10 +150,8 @@ module.exports = {
   //   `project#1.0.1`
   plugins: [
     "hyper-search",
-    "hyperterm-visor",
     "hyperterm-tabs",
-    "hyper-quake",
-    "hyper-blink"
+    "hyper-quake"
   ],
 
   // in development, you can create a directory under
