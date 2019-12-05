@@ -1,0 +1,36 @@
+{
+    "python.pythonPath": ".venv/bin/python",
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.linting.enabled": true,
+    "python.testing.unittestEnabled": false,
+    "python.testing.nosetestsEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "python.venvPath": ".venv",
+	"python.workspaceSymbols.exclusionPatterns": [
+        "**/__pycache__",
+        ".db",
+        ".mypy_cache",
+        ".pytest_cache",
+        ".tox",
+        ".venv",
+	],
+    "files.exclude": {
+        "**/__pycache__": true,
+        "**/*.dist-info": true,
+        "**/*.egg-info": true,
+        ".venv/bin": true,
+        ".venv/lib64": true,
+        ".venv/share": true,
+        ".venv/include": true,
+        ".db": true,
+        ".mypy_cache": true,
+        ".pytest_cache": true,
+        ".tox": true,
+    },
+    "gitlens.advanced.messages": {
+        "suppressLineUncommittedWarning": true
+    },
+    "explorer.confirmDragAndDrop": false,
+    "python.testing.autoTestDiscoverOnSaveEnabled": false
+}
