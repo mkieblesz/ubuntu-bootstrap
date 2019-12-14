@@ -34,6 +34,7 @@
     "python.testing.nosetestsEnabled": false,
     "python.testing.pytestEnabled": true,
     "python.testing.pytestPath": "pytest",
+    "python.testing.pytestArgs": ["--no-cov"],
     "python.pythonPath": ".venv/bin/python",
     "python.venvPath": ".venv",
     "python.workspaceSymbols.exclusionPatterns": [
@@ -45,8 +46,6 @@
         ".venv"
     ],
     "search.exclude": {
-        "**/node_modules": true,
-        "**/bower_components": true,
         "data-load": true
     },
     // disable class annotations
