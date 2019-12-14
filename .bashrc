@@ -46,19 +46,23 @@ PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
 # skim - fuzzy finder
 # fuzzy search for files in current directory with preview and if found open in vim
-bind '"\C-p": "\C-a vim $(sk -e --preview \"bat --color=always {}\") \C-j"'
+bind '"\C-p": "\C-avim $(sk -e --preview \"bat --color=always {}\") \C-j"'
 # fuzzy search for text recrusiviely in all files in current directory and if found open in vim at correct line and column
-bind '"\C-o": "\C-a vim $(sk --ansi -i -c \"rg --no-ignore --hidden --color=always --line-number \\\"{}\\\"\" | cut -f 1-2 -d : | sed \"s/:/ +/g\") \C-j"'
+bind '"\C-o": "\C-avim $(sk --ansi -i -c \"rg --no-ignore --hidden --color=always --line-number \\\"{}\\\"\" | cut -f 1-2 -d : | sed \"s/:/ +/g\") \C-j"'
 
 # hstr - reverse history search
 export HSTR_CONFIG=hicolor,raw-history-view,regexp-matching,static-favorites,skip-favorites-comments
 export PROMPT_COMMAND="history -a; history -n; ${PROMPT_COMMAND}"
 # history search chronological
-bind '"\C-r": "\C-a hstr -- \C-j"'
+bind '"\C-r": "\C-ahstr -- \C-j"'
 # history search rated
-bind '"\C-t": "\C-a HSTR_CONFIG=hicolor,regexp-matching,static-favorites,skip-favorites-comments hstr -- \C-j"'
+bind '"\C-t": "\C-aHSTR_CONFIG=hicolor,regexp-matching,static-favorites,skip-favorites-comments hstr -- \C-j"'
 # history search favourites (save in ~/.hstr_favorites)
-bind '"\C-f": "\C-a hstr -f \C-j"'
+bind '"\C-f": "\C-ahstr -f \C-j"'
+
+# docker & docker-compose
+alias d="docker"
+alias dc="docker-compose"
 
 # gcloud
 if [ -f '/opt/google-cloud-sdk/path.bash.inc' ]; then . '/opt/google-cloud-sdk/path.bash.inc'; fi
@@ -76,28 +80,40 @@ alias l='ls -CF'
 alias clear="printf '\33[H\33[2J'"
 
 # LANGUAGES
-# Go
-export GOROOT=/usr/local/go/
-export GOPATH=$HOME/Projects/go/
-export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
-
 # Node
-unset NODE_PATH
-. $HOME/.nvm_load.sh
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-
-# Haskell
-export PATH="$HOME/.cabal/bin:/opt/cabal/1.22/bin:/opt/ghc/7.10.3/bin:$PATH"
+export NVM_ROOT="${HOME}/.nvm"
+if [ -d "${NVM_ROOT}" ]; then
+    . "${NVM_ROOT}/.nvm_load.sh"
+fi
 
 # Ruby
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+export RBENV_ROOT="${HOME}/.rbenv"
+if [ -d "${RBENV_ROOT}" ]; then
+    export PATH="${RBENV_ROOT}/bin:${PATH}"
+    eval "$(rbenv init -)"
+fi
 
 # Python
-alias python=python3
+export PYTHONDONTWRITEBYTECODE=0
+export PYENV_ROOT="${HOME}/.pyenv"
+if [ -d "${PYENV_ROOT}" ]; then
+    export PATH="${PYENV_ROOT}/bin:${PATH}"
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+fi
 
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
 
-# Elixir
-export PATH="$PATH:/opt/elixir/bin"
+# Erlang
+export EVM_ROOT="${HOME}/.evm"
+if [ -d "${EVM_ROOT}" ]; then
+    . "${EVM_ROOT}/scripts/evm"
+fi
+
+# Go
+export GOPATH="$HOME/go"; export GOROOT="$HOME/.go"; export PATH="$GOPATH/bin:$PATH"; # g-install: do NOT edit, see https://github.com/stefanmaric/g
+
+# Elixir (via .asdf plugin)
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash

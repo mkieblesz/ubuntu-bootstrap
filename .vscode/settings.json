@@ -1,24 +1,13 @@
 {
-    "python.pythonPath": ".venv/bin/python",
-    "python.linting.pylintEnabled": false,
-    "python.linting.flake8Enabled": true,
-    "python.linting.enabled": true,
-    "python.testing.unittestEnabled": false,
-    "python.testing.nosetestsEnabled": false,
-    "python.testing.pytestEnabled": true,
-    "python.venvPath": ".venv",
-	"python.workspaceSymbols.exclusionPatterns": [
-        "**/__pycache__",
-        ".db",
-        ".mypy_cache",
-        ".pytest_cache",
-        ".tox",
-        ".venv",
-	],
+    "editor.rulers": [
+        100
+    ],
+    "explorer.confirmDragAndDrop": false,
     "files.exclude": {
         "**/__pycache__": true,
         "**/*.dist-info": true,
         "**/*.egg-info": true,
+        ".coverage": true,
         ".venv/bin": true,
         ".venv/lib64": true,
         ".venv/share": true,
@@ -26,11 +15,42 @@
         ".db": true,
         ".mypy_cache": true,
         ".pytest_cache": true,
-        ".tox": true,
+        ".tox": true
     },
-    "gitlens.advanced.messages": {
-        "suppressLineUncommittedWarning": true
+    "python.autoComplete.addBrackets": true,
+    "python.formatting.blackArgs": [
+        "-S",
+        "-l",
+        "100",
+        "-t",
+        "py37"
+    ],
+    "python.formatting.provider": "black",
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": false,
+    "python.testing.autoTestDiscoverOnSaveEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.testing.unittestEnabled": false,
+    "python.testing.nosetestsEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "python.testing.pytestPath": "pytest",
+    "python.pythonPath": ".venv/bin/python",
+    "python.venvPath": ".venv",
+    "python.workspaceSymbols.exclusionPatterns": [
+        "**/__pycache__",
+        ".db",
+        ".mypy_cache",
+        ".pytest_cache",
+        ".tox",
+        ".venv"
+    ],
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/bower_components": true,
+        "data-load": true
     },
-    "explorer.confirmDragAndDrop": false,
-    "python.testing.autoTestDiscoverOnSaveEnabled": false
+    // disable class annotations
+    "gitlens.codeLens.recentChange.enabled": false,
+    "gitlens.codeLens.authors.enabled": false,
+    "gitlens.blame.line.enabled": false
 }
