@@ -1,7 +1,9 @@
 {
+    "diffEditor.renderSideBySide": false,
     "editor.rulers": [
         100
     ],
+    "editor.suggestSelection": "first",
     "explorer.confirmDragAndDrop": false,
     "files.exclude": {
         "**/__pycache__": true,
@@ -17,6 +19,10 @@
         ".pytest_cache": true,
         ".tox": true
     },
+    // disable git class annotations
+    "gitlens.codeLens.recentChange.enabled": false,
+    "gitlens.codeLens.authors.enabled": false,
+    "gitlens.blame.line.enabled": false,
     "python.autoComplete.addBrackets": true,
     "python.formatting.blackArgs": [
         "-S",
@@ -26,15 +32,16 @@
         "py37"
     ],
     "python.formatting.provider": "black",
+    "python.jediEnabled": false,
     "python.linting.enabled": true,
     "python.linting.pylintEnabled": false,
-    "python.testing.autoTestDiscoverOnSaveEnabled": false,
+    "python.testing.autoTestDiscoverOnSaveEnabled": true,
     "python.linting.flake8Enabled": true,
     "python.testing.unittestEnabled": false,
     "python.testing.nosetestsEnabled": false,
     "python.testing.pytestEnabled": true,
     "python.testing.pytestPath": "pytest",
-    "python.testing.pytestArgs": ["--no-cov"],
+    "python.testing.pytestArgs": ["--no-cov", "--reuse-db"],
     "python.pythonPath": ".venv/bin/python",
     "python.venvPath": ".venv",
     "python.workspaceSymbols.exclusionPatterns": [
@@ -48,8 +55,6 @@
     "search.exclude": {
         "data-load": true
     },
-    // disable class annotations
-    "gitlens.codeLens.recentChange.enabled": false,
-    "gitlens.codeLens.authors.enabled": false,
-    "gitlens.blame.line.enabled": false
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "workbench.iconTheme": "vscode-icons",
 }
