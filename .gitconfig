@@ -1,23 +1,11 @@
 [user]
-	email = mattkieblesz@hotmail.com
-	name = Mateusz Kieblesz
+    email = mattkieblesz@hotmail.com
+    name = Mateusz Kieblesz
 [core]
-	editor = vim
-	pager = diff-so-fancy | less --tabs=4 -RFX
-	excludesfile = ~/.gitignore
+    editor = vim
+    pager = delta --plus-color="#012800" --minus-color="#340001"
+    excludesfile = ~/.gitignore
+[interactive]
+    diffFilter = delta --color-only
 [push]
-	default = simple
-[color]
-	ui = true
-[color "diff-highlight"]
-	oldNormal = red bold
-	oldHighlight = red bold 52
-	newNormal = green bold
-	newHighlight = green bold 22
-[color "diff"]
-	meta = yellow
-	frag = magenta bold
-	commit = yellow bold
-	old = red bold
-	new = green bold
-	whitespace = red reverse
+    default = simple
